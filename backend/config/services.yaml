@@ -1,0 +1,13 @@
+# config/services.yaml
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Repository\UserRepository:
+        factory: ['@doctrine_mongodb.odm.document_manager', 'getRepository']
+        arguments: ['App\Document\User']
+
+    App\Security\UserProvider:
+        arguments:
+            $userRepository: '@App\Repository\UserRepository'

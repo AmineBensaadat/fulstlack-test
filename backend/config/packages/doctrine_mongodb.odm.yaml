@@ -1,0 +1,15 @@
+doctrine_mongodb:
+    connections:
+        default:
+            server: 'mongodb://localhost:27017'  # Adjust as necessary
+    default_database: my_database      # Replace with your database name
+    document_managers:
+        default:
+            auto_mapping: true
+            mappings:
+                App\Document\:
+                    is_bundle: false
+                    type: annotation
+                    dir: '%kernel.project_dir%/src/Document'
+                    prefix: 'App\Document'
+                    alias: App
